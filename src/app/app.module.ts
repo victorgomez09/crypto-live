@@ -1,18 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
+import { CryptoHomeComponent } from './views/crypto-home/crypto-home.component';
+import { CryptoInfoComponent } from './views/crypto-info/crypto-info.component';
+import { WebHomeComponent } from './views/web-home/web-home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        CryptoHomeComponent,
+        CryptoInfoComponent,
+        WebHomeComponent,
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
+    providers: [],
+    bootstrap: [WebHomeComponent]
 })
 export class AppModule { }

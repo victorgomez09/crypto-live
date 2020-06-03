@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "./assets/scss/bootswatch";
+
+.body-black {
+    background-color: rgb(5, 6, 8);
+    color: rgb(204, 204, 204);
+    font-family: "Karben105MonoW00-Medium"
+}
+.body-white {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-family: "Karben105MonoW00-Medium"
+}
+.table-black {
+    color: rgb(204, 204, 204);
+}
+.table-white {
+    color: rgb(0, 0, 0);
+}
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}

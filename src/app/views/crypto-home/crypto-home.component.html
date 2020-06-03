@@ -1,0 +1,59 @@
+<div class="container mt-4" *ngIf="cryptoData != undefined">
+    <div class="row">
+        <div class="col-6 d-flex flex-column">
+            <h5>Principales 100 Criptomonedas</h5>
+            <p>ordenadas por {{sortedColumn.name}} {{sortAscending}}</p>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <span class="mr-1">Cotizacion({{ currency }})</span>
+            <button id="usd" class="btn btn-primary btn-black mr-1" (click)="changeCurrency('usd')"><i
+                    class="fas fa-dollar-sign"></i>
+                USD</button>
+            <button id="eur" class="btn btn-primary btn-black mr-1" (click)="changeCurrency('eur')"><i
+                    class="fas fa-euro-sign"></i>
+                EUR</button>
+            <button id="krw" class="btn btn-primary btn-black mr-1" (click)="changeCurrency('krw')"><i
+                    class="fas fa-won-sign"></i>
+                KRW</button>
+            <button id="btc" class="btn btn-primary btn-black mr-1" (click)="changeCurrency('btc')"><i
+                    class="fab fa-btc"></i>
+                BTC</button>
+            <button id="eth" class="btn btn-primary btn-black mr-1" (click)="changeCurrency('eth')"><i
+                    class="fab fa-ethereum"></i>
+                ETH</button>
+            <!-- <button class="btn btn-primary btn-black mr-1" (click)="changeCurrency('eur')">More</button> -->
+        </div>
+    </div>
+
+    <table id="table" class="table table-sm table-black table-borderless">
+        <thead>
+            <tr>
+                <th [ngClass]="setHeaderStyle(header.data)" *ngFor="let header of tableHeaders"
+                    (click)="sortTable(header)">
+                    {{header.name}} <i [ngClass]="setSortIconHeader(header.data)"></i>
+                </th>
+            </tr>
+        </thead>
+        <tr *ngFor="let cr of cryptoData; index as i">
+            <td class="text-center">{{cr.market_cap_rank}}</td>
+            <td><img src="{{cr.image}}" alt="" /> {{cr.name}} <small><em>{{formatSymbol(cr.symbol)}}</em></small></td>
+            <td id="{{'current_price' + i}}" class="text-right">{{formatAmount(cr.current_price)}}</td>
+            <td id="{{ 'market_cap' + i }}" class="text-right">{{formatAmount(cr.market_cap)}}</td>
+            <td id="{{ 'circulating_supply' + i }}" class="text-right">{{formatValue(cr.circulating_supply)}}
+                {{formatSymbol(cr.symbol)}}</td>
+            <td id="{{ 'total_volume' + i }}" class="text-right">{{formatAmount(cr.total_volume)}}</td>
+            <td id="{{ 'price_change_percentage_1h_in_currency' + i }}"
+                [ngClass]="checkPercentage(cr.price_change_percentage_1h_in_currency)">
+                {{formatPercentage(cr.price_change_percentage_1h_in_currency)}} %
+            </td>
+            <td id="{{ 'price_change_percentage_24h' + i }}"
+                [ngClass]="checkPercentage(cr.price_change_percentage_24h)">
+                {{formatPercentage(cr.price_change_percentage_24h)}} %
+            </td>
+            <td id="{{ 'price_change_percentage_7d_in_currency' + i }}"
+                [ngClass]="checkPercentage(cr.price_change_percentage_7d_in_currency)">
+                {{formatPercentage(cr.price_change_percentage_7d_in_currency)}} %
+            </td>
+        </tr>
+    </table>
+</div>

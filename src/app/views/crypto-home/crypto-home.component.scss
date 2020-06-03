@@ -1,0 +1,32 @@
+img {
+    width: 15px;
+    height: 15px;
+}
+.pointer {
+    cursor: pointer;
+}
+th:hover {
+    background-color: rgba(136, 136, 136, 0.171)
+}
+
+@keyframes fadeBetweenSuccess { 
+    0% {color: #3FB618}
+    50% {color: #3FB618}
+    0% {color: rgb(204, 204, 204)}
+}
+
+.colour-fade-success {
+    animation-name: fadeBetweenSuccess;
+    animation-duration: 6s;
+} 
+
+@keyframes fadeBetweenWarning { 
+    0% {color: #FF0039}
+    50% {color: #FF0039}
+    0% {color: rgb(204, 204, 204)}
+}
+
+.colour-fade-danger {
+    animation-name: fadeBetweenWarning;
+    animation-duration: 6s;
+} 
