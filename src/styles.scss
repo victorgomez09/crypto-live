@@ -3,17 +3,24 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./assets/scss/bootswatch";
 
-@font-face {font-family: "Karben205MonoW00-Medium"; src: url("//db.onlinewebfonts.com/t/01778d8253ed25875ff6674cedcfde91.eot"); src: url("//db.onlinewebfonts.com/t/01778d8253ed25875ff6674cedcfde91.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/01778d8253ed25875ff6674cedcfde91.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/01778d8253ed25875ff6674cedcfde91.woff") format("woff"), url("//db.onlinewebfonts.com/t/01778d8253ed25875ff6674cedcfde91.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/01778d8253ed25875ff6674cedcfde91.svg#Karben205MonoW00-Medium") format("svg"); }
+@font-face {font-family: "Karben 205 Mono W00 Medium";
+    src: url("./font/01778d8253ed25875ff6674cedcfde91.eot"); /* IE9*/
+    src: url("./font/01778d8253ed25875ff6674cedcfde91.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./font/01778d8253ed25875ff6674cedcfde91.woff2") format("woff2"), /* chrome、firefox */
+    url("./font/01778d8253ed25875ff6674cedcfde91.woff") format("woff"), /* chrome、firefox */
+    url("./font/01778d8253ed25875ff6674cedcfde91.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("./font/01778d8253ed25875ff6674cedcfde91.svg#Karben 205 Mono W00 Medium") format("svg"); /* iOS 4.1- */
+  }
 
 .body-black {
     background-color: rgb(5, 6, 8);
     color: rgb(204, 204, 204);
-    // font-family: "Karben105MonoW00-Medium"
+    font-family: "Karben 205 Mono W00 Medium"
 }
 .body-white {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    font-family: "Karben105MonoW00-Medium"
+    font-family: "Karben 205 Mono W00 Medium"
 }
 .table-black {
     color: rgb(204, 204, 204);
