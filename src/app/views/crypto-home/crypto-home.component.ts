@@ -54,10 +54,8 @@ export class CryptoHomeComponent implements OnInit {
     constructor(private apiService: ApiService, @Inject(DOCUMENT) document) { }
 
     fetchCryptoData() {
-        console.log('currency', this.currency)
         this.apiService.fetchCryptoData(this.currency)
             .subscribe(response => {
-                console.log('data', response)
                 this.cryptoData = response
             });
         this.fetchTimer();
