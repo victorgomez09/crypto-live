@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
+        "start": "node app.js",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
@@ -26,7 +26,8 @@
         "cryptocurrency-icons-font": "^0.6.5",
         "rxjs": "~6.4.0",
         "tslib": "^1.10.0",
-        "zone.js": "~0.9.1"
+        "zone.js": "~0.9.1",
+        "express": "^4.13.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.803.23",
@@ -47,6 +48,7 @@
         "protractor": "~5.4.0",
         "ts-node": "~7.0.0",
         "tslint": "~5.15.0",
+        "body-parser": "^1.13.3",
         "typescript": "~3.5.3"
     }
 }
