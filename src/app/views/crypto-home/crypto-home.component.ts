@@ -1,8 +1,8 @@
-import { Component, OnInit, OnChanges, IterableDiffers, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 import { ApiService } from '../../service/api.service';
-import { DOCUMENT } from '@angular/common';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { tableHeaders } from '../../models/table-headers';
 
 interface TableHeaders {
     name: string
@@ -89,7 +89,6 @@ export class CryptoHomeComponent implements OnInit {
     sortTable(column) {
         this.sortedColumn = column;
         this.sortAscending = this.sortAscending === 'Ascendente' ? 'Descendente' : 'Ascendente';
-        // this.cryptoData.sort((a, b) => a[column] > b[column] ? 1 : a[column] < b[column] ? -1 : 0);
         if (this.sortAscending === 'Ascendente') {
             this.cryptoData.sort((a, b) => 0 - (a[column.data] > b[column.data] ? -1 : 1))
         } else {
@@ -117,7 +116,6 @@ export class CryptoHomeComponent implements OnInit {
 
     changeCurrency(currency) {
         this.currency = currency;
-        // document.getElementById(currency).className += "btn-active";
         this.fetchCryptoData();
     }
 
@@ -127,8 +125,6 @@ export class CryptoHomeComponent implements OnInit {
                 .subscribe(response => {
                     Promise.all(response.map((ne, i) => {
                         if (this.cryptoData[i]['current_price'] !== ne['current_price']) {
-                            // console.log('changed')
-                            // console.log('if', (this.cryptoData[i]['current_price'] <= ne['current_price']))
                             if (this.cryptoData[i]['current_price'] <= ne['current_price'])
                                 document.getElementById('current_price' + i).className += " colour-fade-success";
                             else
@@ -153,22 +149,10 @@ export class CryptoHomeComponent implements OnInit {
                                 document.getElementById('total_volume' + i).className += " colour-fade-danger";
                             this.cryptoData[i]['total_volume'] = ne['total_volume']
                         } else if (this.cryptoData[i]['price_change_percentage_1h_in_currency'] !== ne['price_change_percentage_1h_in_currency']) {
-                            // if (this.cryptoData[i]['price_change_percentage_1h_in_currency'] <= ne['price_change_percentage_1h_in_currency'])
-                            //     document.getElementById('price_change_percentage_1h_in_currency' + i).className += " colour-fade-success";
-                            // else
-                            //     document.getElementById('price_change_percentage_1h_in_currency' + i).className += " colour-fade-danger";
                             this.cryptoData[i]['price_change_percentage_1h_in_currency'] = ne['price_change_percentage_1h_in_currency']
                         } else if (this.cryptoData[i]['price_change_percentage_24h'] !== ne['price_change_percentage_24h']) {
-                            // if (this.cryptoData[i]['price_change_percentage_24h'] <= ne['price_change_percentage_24h'])
-                            //     document.getElementById('price_change_percentage_24h' + i).className += " colour-fade-success";
-                            // else
-                            //     document.getElementById('price_change_percentage_24h' + i).className += " colour-fade-danger";
                             this.cryptoData[i]['price_change_percentage_24h'] = ne['price_change_percentage_24h']
                         } else if (this.cryptoData[i]['price_change_percentage_7d_in_currency'] !== ne['price_change_percentage_7d_in_currency']) {
-                            // if (this.cryptoData[i]['price_change_percentage_7d_in_currency'] <= ne['price_change_percentage_7d_in_currency'])
-                            //     document.getElementById('price_change_percentage_7d_in_currency' + i).className += " colour-fade-success";
-                            // else
-                            //     document.getElementById('price_change_percentage_7d_in_currency' + i).className += " colour-fade-danger";
                             this.cryptoData[i]['price_change_percentage_7d_in_currency'] = ne['price_change_percentage_7d_in_currency']
                         }
                     }))
@@ -177,44 +161,7 @@ export class CryptoHomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tableHeaders = [
-            {
-                name: 'Ranking',
-                data: 'market_cap_rank'
-            },
-            {
-                name: 'Nombre',
-                data: 'name'
-            },
-            {
-                name: 'Precio',
-                data: 'current_price'
-            },
-            {
-                name: 'Capitalizacion de mercado',
-                data: 'market_cap'
-            },
-            {
-                name: 'Acciones en circulacion',
-                data: 'circulating_supply'
-            },
-            {
-                name: 'Volumen (24h)',
-                data: 'total_volume'
-            },
-            {
-                name: '1h',
-                data: 'price_change_percentage_1h_in_currency'
-            },
-            {
-                name: '24h',
-                data: 'price_change_percentage_24h'
-            },
-            {
-                name: '7d',
-                data: 'price_change_percentage_7d_in_currency'
-            }
-        ];
+        this.tableHeaders = tableHeaders;
         this.sortedColumn = this.tableHeaders[0];
         this.currency = 'usd';
         this.sortAscending = 'Ascendente';
